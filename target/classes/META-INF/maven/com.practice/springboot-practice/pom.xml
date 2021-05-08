@@ -3,6 +3,54 @@
   <groupId>com.practice</groupId>
   <artifactId>springboot-practice</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
-  
+
+<!-- 以下設定，是從這個官方文件來的：https://spring.io/guides/gs/spring-boot/ -->
+	<!-- parent 就是extends的概念，將ㄧ定要的要dependency整成一包 -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.3</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<!--
+				REST就是MVC
+				REST就是接收http，所以就是web(MVC) -> spring-boot-starter-web		
+			-->
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/ojdbc8-12.2.0.1.jar</systemPath>  <!-- 幫你找db的驅動程式jar檔 -->
+		</dependency>
+		
+		<!-- springboot會幫你決定適合的版本(號)，所以我們不用自己設定版本(號)<version></version> -->		
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+	</dependencies>
+	
+	<!-- build 開發完後，Springboot幫你包裝，發佈程式到server上 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
